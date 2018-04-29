@@ -29,7 +29,7 @@
       }
       #side-buttons {
         width:100%;
-        height: 10%;
+        height: 70px;
         background-color: black;
       }
       #button-container1 {
@@ -86,7 +86,7 @@
       #root {
         float: none;
         position: absolute;
-        top: 70%;
+        top: 60%;
         width: 100%;
 
       }
@@ -107,26 +107,7 @@
 
       <div id="map">
       </div>
-      <div id="side-buttons">
 
-        <div id="button-container5">
-          <div id="button-item-container">HOUSING</div>
-        </div>
-        <div id="button-container4">
-          <div id="button-item-container">SHELTER</div>
-        </div>
-        <div id="button-container3">
-          <div id="button-item-container">FOOD</div>
-        </div>
-        <div id="button-container2">
-          <div id="button-item-container">SAFETY</div>
-        </div>
-        <div id="button-container1">
-          <div id="button-item-container">DANGER</div>
-        </div>
-
-
-      </div>
 
     <div id="root"></div>
     <script>
@@ -232,6 +213,25 @@
           center: myLatLng4,
           radius: 200
         });
+        google.maps.event.addListener(map, 'click', function(event) {
+           placeCircle(event.latLng);
+        });
+
+        var temp = 1;
+        function placeCircle(location) {
+          if(temp > 5) return;
+          temp++;
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.1,
+            strokeWeight: 0,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: location,
+            radius: 200
+          });
+        }
 
       }
     </script>
